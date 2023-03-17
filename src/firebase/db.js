@@ -10,7 +10,10 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig, {
+  experimentalForceLongPolling: true,
+  useFetchStreams: false,
+});
 const db = getFirestore();
 const sebringSite = collection(db, "DigitalUnrivaledExperience2023");
 const sebringApp = collection(db, "Sebring2023-Onsite");

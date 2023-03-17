@@ -30,7 +30,6 @@ export default function Home({ initialAppData, initialSiteData }) {
   const [siteData, setSiteData] = useState(initialSiteData);
 
   useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_FIREBASE_API_KEY);
     const siteUnsub = onSnapshot(sebringSite, (querySnapshot) => {
       setSiteData(querySnapshot.docs.map((doc) => doc.data()));
     });
