@@ -17,5 +17,8 @@ const app = initializeApp(firebaseConfig, {
 const db = getFirestore();
 const sebringSite = collection(db, "DigitalUnrivaledExperience2023");
 const sebringApp = collection(db, "Sebring2023-Onsite");
+const corvette = collection(db, "Sebring2023Corvette");
+const porsche = collection(db, "Sebring2023Porsche");
+const lexus = collection(db, "Sebring2023Lexus");
 
-export { db, sebringSite, sebringApp };
+export { db, sebringSite, sebringApp, corvette, porsche, lexus };
