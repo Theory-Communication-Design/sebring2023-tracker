@@ -45,7 +45,7 @@ export default function Home({ initialAppData, initialSiteData }) {
 
   return (
     <div className="bg-gradient-to-b from-[#0066b3] to-[#003c65] h-screen overflow-auto">
-      <div className="w-2/12 mx-auto pt-6">
+      <div className="w-2/12 mx-auto pt-6 pb-6">
         <Image src={logo} alt="Unrivaled Experiences" />
       </div>
       <div className="flex justify-center mt-24 mb-8">
