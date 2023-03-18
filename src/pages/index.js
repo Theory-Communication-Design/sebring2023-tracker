@@ -14,7 +14,7 @@ import logo from "../../public/ue-logo.png";
 
 export async function getServerSideProps() {
   const initialSiteData = await getData(sebringSite);
-  const initialAppData = await getData(sebringApp);
+  // const initialAppData = await getData(sebringApp);
   const initialCorvetteData = await getData(corvette);
   const initialPorscheData = await getData(porsche);
   const initialLexusData = await getData(lexus);
@@ -31,7 +31,7 @@ export async function getServerSideProps() {
   return {
     props: {
       initialSiteData,
-      initialAppData,
+      // initialAppData,
       initialCorvetteData,
       initialLexusData,
       initialPorscheData,
@@ -40,13 +40,13 @@ export async function getServerSideProps() {
 }
 
 export default function Home({
-  initialAppData,
+  // initialAppData,
   initialSiteData,
   initialCorvetteData,
   initialPorscheData,
   initialLexusData,
 }) {
-  const [appData, setAppData] = useState(initialAppData);
+  const [appData, setAppData] = useState(224);
   const [siteData, setSiteData] = useState(initialSiteData);
   const [corvetteData, setCorvetteData] = useState(initialCorvetteData);
   const [porscheData, setPorscheData] = useState(initialPorscheData);
@@ -56,9 +56,9 @@ export default function Home({
     const siteUnsub = onSnapshot(sebringSite, (querySnapshot) => {
       setSiteData(querySnapshot.docs.map((doc) => doc.data().email));
     });
-    const appUnsub = onSnapshot(sebringApp, (querySnapshot) => {
-      setAppData(querySnapshot.docs.map((doc) => doc.data().email));
-    });
+    // const appUnsub = onSnapshot(sebringApp, (querySnapshot) => {
+    //   setAppData(querySnapshot.docs.map((doc) => doc.data().email));
+    // });
     const corvetteUnsub = onSnapshot(corvette, (querySnapshot) => {
       setCorvetteData(querySnapshot.docs.map((doc) => doc.data().email));
     });
@@ -71,7 +71,7 @@ export default function Home({
 
     return () => {
       siteUnsub();
-      appUnsub();
+      // appUnsub();
       corvetteUnsub();
       porscheUnsub();
       lexusUnsub();
@@ -86,15 +86,13 @@ export default function Home({
       <div className="flex justify-center mt-24 mb-8">
         <div className="bg-slate-50 w-80 text-slate-900 text-center py-6 px-12 rounded shadow-lg">
           <h2 className="uppercase text-2xl">Total Entries:</h2>
-          <p className="font-bold text-4xl mt-2">
-            {appData.length + siteData.length}
-          </p>
+          <p className="font-bold text-4xl mt-2">{appData + siteData.length}</p>
         </div>
       </div>
       <div className="flex justify-center mb-8">
         <div className="bg-slate-50 w-80 text-slate-900 text-center py-6 px-12 rounded shadow-lg">
           <h2 className="uppercase text-2xl">App Entries:</h2>
-          <p className="font-bold text-4xl mt-2">{appData.length}</p>
+          <p className="font-bold text-4xl mt-2">{appData}</p>
         </div>
       </div>
       <div className="flex justify-center mb-8">
