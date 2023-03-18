@@ -21,7 +21,9 @@ export async function getServerSideProps() {
 
   async function getData(ref) {
     const snapshot = await getDocs(ref);
-    const data = snapshot.docs.map((doc) => doc.data());
+    const data = snapshot.docs.map((doc) => {
+      return doc.data().email;
+    });
 
     return data;
   }
@@ -52,19 +54,19 @@ export default function Home({
 
   useEffect(() => {
     const siteUnsub = onSnapshot(sebringSite, (querySnapshot) => {
-      setSiteData(querySnapshot.docs.map((doc) => doc.data()));
+      setSiteData(querySnapshot.docs.map((doc) => doc.data().email));
     });
     const appUnsub = onSnapshot(sebringApp, (querySnapshot) => {
-      setAppData(querySnapshot.docs.map((doc) => doc.data()));
+      setAppData(querySnapshot.docs.map((doc) => doc.data().email));
     });
     const corvetteUnsub = onSnapshot(corvette, (querySnapshot) => {
-      setCorvetteData(querySnapshot.docs.map((doc) => doc.data()));
+      setCorvetteData(querySnapshot.docs.map((doc) => doc.data().email));
     });
     const porscheUnsub = onSnapshot(porsche, (querySnapshot) => {
-      setPorscheData(querySnapshot.docs.map((doc) => doc.data()));
+      setPorscheData(querySnapshot.docs.map((doc) => doc.data().email));
     });
     const lexusUnsub = onSnapshot(lexus, (querySnapshot) => {
-      setLexusData(querySnapshot.docs.map((doc) => doc.data()));
+      setLexusData(querySnapshot.docs.map((doc) => doc.data().email));
     });
 
     return () => {
